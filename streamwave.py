@@ -18,9 +18,6 @@ class User:
     def logout(self):
         pass
 
-    def upgrade_to_premium(self):
-        pass
-
 class Listener(User):
     def __init__(self, user_id, username, email, password_hash):
         super().__init__(user_id, username, email, password_hash)
@@ -100,5 +97,6 @@ def generate_recommendations(listener, all_songs):
     for song in all_songs:
         if song.genre == top_genre:
             recommended.append(song)
+
 
     return recommended
