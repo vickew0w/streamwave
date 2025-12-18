@@ -1,5 +1,6 @@
 import json
 from classes import Listener, Artist
+import os
 
 users = {}
 songs = {}
@@ -19,6 +20,9 @@ def save_to_json(filename = "users.json"):
 
 def load_users(filename="users.json"):
     global users
+    if not os.path.exists(filename):
+        users = {}
+        return
     with open(filename, "r") as f:
         data = json.load(f)
         for uid, user in data.items():
@@ -29,3 +33,4 @@ def load_users(filename="users.json"):
 
             obj.is_premium = user["is_premium"]
             users[int(uid)] = obj
+
